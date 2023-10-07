@@ -48,3 +48,16 @@ def add_registrants(settings, meeting_id, csv_path):
             print(f"An error occurred: {e}")
     else:
         print("Access token retrieval failed. Check your credentials.")
+
+def add_registrant_api(settings,meeting_id,json_data):
+    token = get_access_token(settings)
+    if token:
+        my_headers = {'Authorization': 'Bearer ' + token}
+        try:
+            response = requests.post('https://api.zoom.us/v2/meetings/'+meeting_id+'/registrants', json=json_data, headers=my_headers)
+            print(response)
+            print('Registrants added successfully')
+        except Exception as e:
+            print(f"An error occurred: {e}")
+    else:
+        print("Access token retrieval failed. Check your credentials.")

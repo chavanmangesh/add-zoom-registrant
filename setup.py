@@ -8,7 +8,7 @@ Project description
 
 Add Zoom Registrant
 
-A simple package to add Zoom Registrant from csv.
+A simple package to add Zoom Registrant from csv also add email using api.
 
 How to install
 
@@ -18,10 +18,7 @@ Import
 
 from myzoom.setting import configure
 from myzoom.AddZoomRegistrant import add_registrants
-
-meeting_id = input("Enter meeting id: ")
-csv_path = input("Enter csv file path: ")
-add_registrants(configure, meeting_id, csv_path)
+from myzoom.AddZoomRegistrant import add_registrant_api
 
 Initialize the Package
 We can either setup via the environment or by passing the credentials directly to the plugin.
@@ -34,13 +31,24 @@ And then instantiate as shown below
 
 settings = configure(client_id, client_secret, account_id)
 
+And then Enter meeting Id 
+meeting_id = input("Enter meeting id: ")
+
+
 NOTE
 
 You don't need to explicitely pass client_id, client_secret, account_id.
 
+API to add registrant into meeting 
+
+json_data = {"first_name": '', "last_name": '', "email": ''}
+add_registrant_api(settings,meeting_id,json_data)
+
+OR 
+Enter path of csv file
 
 csv_path = input("Enter csv file path: ")
-add_registrants(settings, meeting_id, csv_path)
+add_registrants(configure, meeting_id, csv_path)
 
 
 zoom.csv format must as below.
@@ -53,8 +61,8 @@ Id	FirstName	LastName	Email
 """
 
 setup(
-    name="add_zoom_registrant",
-    version="0.3",
+    name="add-registrant-zoom",
+    version="0.5",
     url='https://github.com/own-coder/add-zoom-registrant',
     description="A package for interacting with Zoom API",
     author="Mangesh Chavan",
