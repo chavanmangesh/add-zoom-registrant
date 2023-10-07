@@ -1,8 +1,0 @@
-setup.py
-AddZoomRegistrant.egg-info/PKG-INFO
-AddZoomRegistrant.egg-info/SOURCES.txt
-AddZoomRegistrant.egg-info/dependency_links.txt
-AddZoomRegistrant.egg-info/top_level.txt
-myzoom/AddZoomRegistrant.py
-myzoom/__init__.py
-myzoom/setting.py
